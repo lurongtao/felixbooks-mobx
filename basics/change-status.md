@@ -58,7 +58,7 @@ class Store{
   @action.bound foo(){
     this.str = 'world';
     this.num = 40;
-  } 
+  }
 }
 
 const store = new Store();
@@ -67,11 +67,21 @@ setInterval(store.foo, 1000)
 
 ### 3. runInAction
 
-`runInAction` 是个简单的工具函数,若只需执行一次，可使用`runInAction` 替换`action` 
+`action` 只能影响正在运行的函数，而无法影响当前函数调用的异步操作。如果你使用async function来处理业务，那么我们可以使用 `runInAction` 这个API来解决这个问题。
 
 ```js
-runInAction(()=>{
-  store.num = 220;
-  store.str = 'world';
-})	
+@action async fzz() {
+  await new Promise((resolve) => { 
+    setTimeout(() => {
+      resolve({
+        num: 220,
+        str: 'world'
+      })
+    }, 1000) 
+  })
+  runInAction(()=>{
+    store.num = 220
+    store.str = 'world'
+  })	
+}
 ```

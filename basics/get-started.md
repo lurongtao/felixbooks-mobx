@@ -8,6 +8,8 @@ npm i webpack webpack-cli webpack-dev-server -D
 npm i html-webpack-plugin -D
 npm i babel-loader @babel/core @babel/preset-env -D
 npm i @babel/plugin-proposal-decorators @babel/plugin-proposal-class-properties -D
+npm i @babel/plugin-transform-runtime -D
+npm i @babel/runtime -S
 npm i mobx -S
 mkdir src
 mkdir dist
@@ -41,7 +43,8 @@ module.exports = {
             plugins: [
               //支持装饰器
               ["@babel/plugin-proposal-decorators", { "legacy": true }],
-              ["@babel/plugin-proposal-class-properties", { "loose" : true }]
+              ["@babel/plugin-proposal-class-properties", { "loose" : true }],
+              ['@babel/plugin-transform-runtime']
             ]
           }
         }

@@ -24,7 +24,7 @@ console.log(store.obj.a);
 
 注意：vscode编译器中，js文件使用装饰器会报红。解决方式：
 
-在根目录编写写jsconfig.json
+在根目录编写jsconfig.json
 
 ```json
 {

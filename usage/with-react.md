@@ -12,7 +12,6 @@ cd react-app
 npm run eject
 npm i @babel/plugin-proposal-decorators @babel/plugin-proposal-class-properties -D
 npm i mobx mobx-react -S
-touch 
 ```
 
 修改package.json中babel的配置：
