@@ -1,0 +1,423 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>observable可观察的状态 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="observable-decorators.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="get-started.html">
+            
+                <a href="get-started.html">
+            
+                    
+                    mobx搭建环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    mobx入门
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.1" data-path="observable-data.html">
+            
+                <a href="observable-data.html">
+            
+                    
+                    observable可观察的状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="observable-decorators.html">
+            
+                <a href="observable-decorators.html">
+            
+                    
+                    observable装饰器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="reactions.html">
+            
+                <a href="reactions.html">
+            
+                    
+                    对 observables 作出响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="change-status.html">
+            
+                <a href="change-status.html">
+            
+                    
+                    改变 observables状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../usage/">
+            
+                <a href="../usage/">
+            
+                    
+                    应用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../usage/with-react.html">
+            
+                <a href="../usage/with-react.html">
+            
+                    
+                    在react中使用mobx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../usage/react-app.md">
+            
+                <span>
+            
+                    
+                    react-app案例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../thanks/README.md">
+            
+                <span>
+            
+                    
+                    感谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >observable可观察的状态</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="mobx&#x5165;&#x95E8;">mobx&#x5165;&#x95E8;</h1>
+<h2 id="observable&#x53EF;&#x89C2;&#x5BDF;&#x7684;&#x72B6;&#x6001;">observable&#x53EF;&#x89C2;&#x5BDF;&#x7684;&#x72B6;&#x6001;</h2>
+<h3 id="1-map">1. map</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> {observable} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;mobx&apos;</span>
+<span class="hljs-comment">// &#x58F0;&#x660E;</span>
+<span class="hljs-keyword">const</span> map = observable.map({a: <span class="hljs-number">1</span>, b: <span class="hljs-number">2</span>});
+<span class="hljs-comment">// &#x8BBE;&#x7F6E;</span>
+map.set(<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-number">11</span>);
+<span class="hljs-comment">// &#x83B7;&#x53D6;</span>
+<span class="hljs-built_in">console</span>.log(map.get(<span class="hljs-string">&apos;a&apos;</span>));
+<span class="hljs-built_in">console</span>.log(map.get(<span class="hljs-string">&apos;b&apos;</span>));
+<span class="hljs-comment">// &#x5220;&#x9664;</span>
+map.delete(<span class="hljs-string">&apos;a&apos;</span>);
+<span class="hljs-built_in">console</span>.log(map.get(<span class="hljs-string">&apos;a&apos;</span>));
+<span class="hljs-comment">// &#x5224;&#x65AD;&#x662F;&#x5426;&#x5B58;&#x5728;&#x5C5E;&#x6027;</span>
+<span class="hljs-built_in">console</span>.log(map.has(<span class="hljs-string">&apos;a&apos;</span>));
+</code></pre>
+<h3 id="2-object">2. object</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> {observable} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;mobx&apos;</span>
+<span class="hljs-comment">// &#x58F0;&#x660E;</span>
+<span class="hljs-keyword">const</span> obj = observable({a: <span class="hljs-number">1</span>, b: <span class="hljs-number">2</span>});
+<span class="hljs-comment">// &#x4FEE;&#x6539;</span>
+obj.a = <span class="hljs-number">11</span>;
+<span class="hljs-comment">// &#x8BBF;&#x95EE;</span>
+<span class="hljs-built_in">console</span>.log(obj.a, obj.b);
+</code></pre>
+<h3 id="3-array">3. array</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> {observable} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;mobx&apos;</span>
+<span class="hljs-keyword">const</span> arr = observable([<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>, <span class="hljs-string">&apos;c&apos;</span>, <span class="hljs-string">&apos;d&apos;</span>]);
+<span class="hljs-comment">// &#x8BBF;&#x95EE;</span>
+<span class="hljs-built_in">console</span>.log(arr[<span class="hljs-number">0</span>], arr[<span class="hljs-number">10</span>]);
+<span class="hljs-comment">// &#x64CD;&#x4F5C;</span>
+arr.pop();
+arr.push(<span class="hljs-string">&apos;e&apos;</span>);
+</code></pre>
+<h3 id="4-&#x57FA;&#x7840;&#x7C7B;&#x578B;">4. &#x57FA;&#x7840;&#x7C7B;&#x578B;</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> {observable} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;mobx&apos;</span>/
+<span class="hljs-keyword">const</span> num = observable.box(<span class="hljs-number">10</span>);
+<span class="hljs-keyword">const</span> str = observable.box(<span class="hljs-string">&apos;hello&apos;</span>);
+<span class="hljs-keyword">const</span> bool = observable.box(<span class="hljs-literal">true</span>);
+<span class="hljs-comment">// &#x83B7;&#x5F97;&#x503C;</span>
+<span class="hljs-built_in">console</span>.log(num.get(), str.get(), bool.get());
+<span class="hljs-comment">// &#x4FEE;&#x6539;&#x503C;</span>
+num.set(<span class="hljs-number">100</span>);
+str.set(<span class="hljs-string">&apos;hi&apos;</span>);
+bool.set(<span class="hljs-literal">false</span>);
+<span class="hljs-built_in">console</span>.log(num.get(), str.get(), bool.get());
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: mobx入门">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="observable-decorators.html" class="navigation navigation-next " aria-label="Next page: observable装饰器">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"observable可观察的状态","level":"1.3.1","depth":2,"next":{"title":"observable装饰器","level":"1.3.2","depth":2,"path":"basics/observable-decorators.md","ref":"basics/observable-decorators.md","articles":[]},"previous":{"title":"mobx入门","level":"1.3","depth":1,"path":"basics/README.md","ref":"basics/README.md","articles":[{"title":"observable可观察的状态","level":"1.3.1","depth":2,"path":"basics/observable-data.md","ref":"basics/observable-data.md","articles":[]},{"title":"observable装饰器","level":"1.3.2","depth":2,"path":"basics/observable-decorators.md","ref":"basics/observable-decorators.md","articles":[]},{"title":"对 observables 作出响应","level":"1.3.3","depth":2,"path":"basics/reactions.md","ref":"basics/reactions.md","articles":[]},{"title":"改变 observables状态","level":"1.3.4","depth":2,"path":"basics/change-status.md","ref":"basics/change-status.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"basics/observable-data.md","mtime":"2020-02-12T09:29:18.047Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-12T09:41:59.279Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
