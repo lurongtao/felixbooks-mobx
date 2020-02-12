@@ -1,0 +1,435 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>改变 observables状态 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../usage/" />
+    
+    
+    <link rel="prev" href="reactions.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="get-started.html">
+            
+                <a href="get-started.html">
+            
+                    
+                    mobx搭建环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    mobx入门
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="observable-data.html">
+            
+                <a href="observable-data.html">
+            
+                    
+                    observable可观察的状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="observable-decorators.html">
+            
+                <a href="observable-decorators.html">
+            
+                    
+                    observable装饰器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="reactions.html">
+            
+                <a href="reactions.html">
+            
+                    
+                    对 observables 作出响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.4" data-path="change-status.html">
+            
+                <a href="change-status.html">
+            
+                    
+                    改变 observables状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../usage/">
+            
+                <a href="../usage/">
+            
+                    
+                    应用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../usage/with-react.html">
+            
+                <a href="../usage/with-react.html">
+            
+                    
+                    在react中使用mobx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../usage/react-app.md">
+            
+                <span>
+            
+                    
+                    react-app案例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../thanks/README.md">
+            
+                <span>
+            
+                    
+                    感谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >改变 observables状态</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="mobx&#x5165;&#x95E8;">mobx&#x5165;&#x95E8;</h1>
+<h2 id="&#x6539;&#x53D8;-observables&#x72B6;&#x6001;">&#x6539;&#x53D8; observables&#x72B6;&#x6001;</h2>
+<h3 id="1-action">1. action</h3>
+<p>&#x63A5;&#x4E0A;&#x9762;&#x6848;&#x4F8B;&#xFF0C;&#x6DFB;&#x52A0;action&#x5230;&#x7C7B;&#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Store</span></span>{
+  @observable arr = [];
+  @observable obj = {a: <span class="hljs-number">1</span>};
+  @observable map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();
+
+  @observable str = <span class="hljs-string">&apos;hello&apos;</span>;
+  @observable num = <span class="hljs-number">123</span>;
+  @observable bool = <span class="hljs-literal">false</span>;
+
+  @computed get result(){
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.str + <span class="hljs-keyword">this</span>.num;
+  }
+
+  @action bar(){
+    <span class="hljs-keyword">this</span>.str = <span class="hljs-string">&apos;world&apos;</span>;
+    <span class="hljs-keyword">this</span>.num = <span class="hljs-number">40</span>;
+  }
+}
+<span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Store();
+
+<span class="hljs-comment">//&#x8C03;&#x7528;action&#xFF0C;&#x53EA;&#x4F1A;&#x6267;&#x884C;&#x4E00;&#x6B21;</span>
+store.bar();
+</code></pre>
+<h3 id="2-actionbound">2. action.bound</h3>
+<p><code>action.bound</code> &#x53EF;&#x4EE5;&#x7528;&#x6765;&#x81EA;&#x52A8;&#x5730;&#x5C06;&#x52A8;&#x4F5C;&#x7ED1;&#x5B9A;&#x5230;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Store</span></span>{
+  @observable arr = [];
+  @observable obj = {a: <span class="hljs-number">1</span>};
+  @observable map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();
+
+  @observable str = <span class="hljs-string">&apos;hello&apos;</span>;
+  @observable num = <span class="hljs-number">123</span>;
+  @observable bool = <span class="hljs-literal">false</span>;
+
+  @computed get result(){
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.str + <span class="hljs-keyword">this</span>.num;
+  }
+
+  @action bar(){
+    <span class="hljs-keyword">this</span>.str = <span class="hljs-string">&apos;world&apos;</span>;
+    <span class="hljs-keyword">this</span>.num = <span class="hljs-number">40</span>;
+  }
+
+  <span class="hljs-comment">//this &#x6C38;&#x8FDC;&#x90FD;&#x662F;&#x6B63;&#x786E;&#x7684;</span>
+  @action.bound foo(){
+    <span class="hljs-keyword">this</span>.str = <span class="hljs-string">&apos;world&apos;</span>;
+    <span class="hljs-keyword">this</span>.num = <span class="hljs-number">40</span>;
+  } 
+}
+
+<span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Store();
+setInterval(store.foo, <span class="hljs-number">1000</span>)
+</code></pre>
+<h3 id="3-runinaction">3. runInAction</h3>
+<p><code>runInAction</code> &#x662F;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5DE5;&#x5177;&#x51FD;&#x6570;,&#x82E5;&#x53EA;&#x9700;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF0C;&#x53EF;&#x4F7F;&#x7528;<code>runInAction</code> &#x66FF;&#x6362;<code>action</code> </p>
+<pre><code class="lang-js">runInAction(()=&gt;{
+  store.num = <span class="hljs-number">220</span>;
+  store.str = <span class="hljs-string">&apos;world&apos;</span>;
+})
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="reactions.html" class="navigation navigation-prev " aria-label="Previous page: 对 observables 作出响应">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../usage/" class="navigation navigation-next " aria-label="Next page: 应用">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"改变 observables状态","level":"1.3.4","depth":2,"next":{"title":"应用","level":"1.4","depth":1,"path":"usage/README.md","ref":"usage/README.md","articles":[{"title":"在react中使用mobx","level":"1.4.1","depth":2,"path":"usage/with-react.md","ref":"usage/with-react.md","articles":[]},{"title":"react-app案例","level":"1.4.2","depth":2,"path":"usage/react-app.md","ref":"usage/react-app.md","articles":[]}]},"previous":{"title":"对 observables 作出响应","level":"1.3.3","depth":2,"path":"basics/reactions.md","ref":"basics/reactions.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"basics/change-status.md","mtime":"2020-02-12T09:36:20.798Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-12T09:44:31.317Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
